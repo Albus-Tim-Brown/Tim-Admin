@@ -1,0 +1,4 @@
+#Spring启动环境更改
+spring:
+  profiles:
+    active: test
