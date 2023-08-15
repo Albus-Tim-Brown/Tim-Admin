@@ -47,4 +47,10 @@ public class SaleController {
         return saleService.updateSale(sale);
     }
 
+    @ApiOperation("数据可视化-饼图")
+    @GetMapping("saleAllEcharts")
+    public Res saleAllEcharts(){
+        return saleService.saleAllEcharts();
+    }
+
 }

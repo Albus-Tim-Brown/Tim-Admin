@@ -17,4 +17,6 @@ public interface SaleService {
 
     //修改
     Res updateSale(Sale sale);
+
+    Res saleAllEcharts();
 }

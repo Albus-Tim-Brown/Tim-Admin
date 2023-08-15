@@ -76,6 +76,8 @@
 <script>
 import * as echarts from 'echarts'
 
+import axios from 'axios'
+
 export default {
   name: 'Index',
   data () {
@@ -221,16 +223,28 @@ export default {
                 show: false
               },
               data: [
-                { value: 1048, name: '成交订单量' },
-                { value: 735, name: '退款订单量' },
-                { value: 580, name: '浏览量' },
-                { value: 484, name: '加购量' },
-                { value: 300, name: '预购量' }
+                // { value: 1048, name: '成交订单量' },
+                // { value: 735, name: '退款订单量' },
+                // { value: 580, name: '浏览量' },
+                // { value: 484, name: '加购量' },
+                // { value: 300, name: '预购量' }
               ]
             }
           ]
         }
-        myChart.setOption(option)
+        // myChart.setOption(option)
+        axios.get('http://localhost:8081/sale/saleAllEcharts').then((res) => {
+          console.log(res)
+          // res.data.data.forEach((saleVo) => {
+          //   option.series[0].data.push({
+          //     value: saleVo.value,
+          //     name: saleVo.name
+          //   })
+          // })
+          option.series[0].data = res.data.data
+          console.log(option)
+          myChart.setOption(option)
+        })
       })
     }
   }
